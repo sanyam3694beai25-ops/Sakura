@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Crust Bakery</title>
+  <style>
+
+    /* ===== GENERAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6ee;
+      color: #3b2410;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      background-color: #3b2410;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      color: #f9f0e1;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    nav .logo span {
+      color: #b8793a;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: #f9f0e1;
+      font-size: 15px;
+    }
+
+    nav ul li a:hover {
+      color: #b8793a;
+    }
+
+    nav .order-btn {
+      background-color: #b8793a;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    nav .order-btn:hover {
+      background-color: #d4a265;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 60px;
+      background-color: #fdf6ee;
+      min-height: 90vh;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text .small-tag {
+      color: #b8793a;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      color: #3b2410;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #b8793a;
+      font-style: italic;
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      color: #7a5c3e;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn-dark {
+      background-color: #3b2410;
+      color: #f9f0e1;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .btn-dark:hover {
+      background-color: #b8793a;
+    }
+
+    .btn-link {
+      color: #3b2410;
+      font-size: 14px;
+    }
+
+    .btn-link:hover {
+      color: #b8793a;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 1px solid #e2cdb0;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #3b2410;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #7a5c3e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Hero Image Box */
+    .hero-image {
+      width: 45%;
+      min-height: 500px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background-color: #3b2410;
+      color: #f9f0e1;
+      padding: 12px 18px;
+      border-radius: 6px;
+    }
+
+    .hero-badge .badge-title {
+      font-size: 15px;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    .hero-badge .badge-sub {
+      font-size: 11px;
+      color: #d4a265;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== SCROLLING TICKER ===== */
+    .ticker {
+      background-color: #3b2410;
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 20s linear infinite;
+    }
+
+    .ticker-track span {
+      color: #d4a265;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0 25px;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-label {
+      color: #b8793a;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: #3b2410;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .section-title span {
+      color: #b8793a;
+      font-style: italic;
+    }
+
+    .section-desc {
+      color: #7a5c3e;
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      background-color: #f9f0e1;
+      padding: 80px 60px;
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 380px;
+      min-height: 460px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .year-badge {
+      position: absolute;
+      bottom: -15px;
+      right: -15px;
+      background-color: #b8793a;
+      color: white;
+      width: 130px;
+      height: 130px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .year-badge .big-num {
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .year-badge .small-text {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .features {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      width: 45px;
+      height: 45px;
+      background-color: #f5e9d5;
+      border: 1px solid #e2cdb0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature h4 {
+      font-size: 15px;
+      color: #3b2410;
+      margin-bottom: 4px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: #7a5c3e;
+      line-height: 1.6;
+    }
+
+    /* ===== MENU SECTION ===== */
+    .menu {
+      padding: 80px 60px;
+      background-color: #fdf6ee;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border: 1px solid #e2cdb0;
+      background: transparent;
+      color: #7a5c3e;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: #3b2410;
+      color: #f9f0e1;
+      border-color: #3b2410;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #f9f0e1;
+      border: 1px solid #e2cdb0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 30px rgba(59,36,16,0.12);
+      transform: translateY(-4px);
+      transition: 0.3s;
+    }
+
+    .card-top {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-top img {
+      transform: scale(1.06);
+    }
+
+    .c1 { background: linear-gradient(135deg, #f5deb3, #daa066); }
+    .c2 { background: linear-gradient(135deg, #fde8c8, #e8a060); }
+    .c3 { background: linear-gradient(135deg, #f0d090, #c88040); }
+    .c4 { background: linear-gradient(135deg, #fce8d0, #d4905a); }
+    .c5 { background: linear-gradient(135deg, #f8dfc0, #e09850); }
+    .c6 { background: linear-gradient(135deg, #f5e0b8, #cc8844); }
+    .c7 { background: linear-gradient(135deg, #fde0c0, #d47840); }
+    .c8 { background: linear-gradient(135deg, #f8e8d0, #e8a870); }
+
+    .badge-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #3b2410;
+      color: #f9f0e1;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #3b2410;
+      margin-bottom: 5px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #7a5c3e;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #b8793a;
+    }
+
+    .add-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #3b2410;
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .add-btn:hover {
+      background-color: #b8793a;
+    }
+
+    /* ===== SPECIALS SECTION ===== */
+    .specials {
+      background-color: #3b2410;
+      padding: 80px 60px;
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .specials .section-label { color: #d4a265; }
+    .specials .section-title { color: #f9f0e1; }
+    .specials .section-desc { color: rgba(249,240,225,0.6); }
+
+    .specials-list {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .special-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border: 1px solid rgba(184,121,58,0.3);
+      border-radius: 4px;
+      background-color: rgba(255,255,255,0.04);
+    }
+
+    .special-row:hover {
+      background-color: rgba(184,121,58,0.12);
+    }
+
+    .special-name {
+      font-size: 15px;
+      color: #f9f0e1;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .special-desc {
+      font-size: 12px;
+      color: rgba(249,240,225,0.5);
+      margin-top: 3px;
+    }
+
+    .special-price {
+      font-size: 16px;
+      color: #d4a265;
+      font-weight: bold;
+      white-space: nowrap;
+      margin-left: 20px;
+    }
+
+    .specials-right {
+      flex-shrink: 0;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      border: 6px solid rgba(184,121,58,0.4);
+    }
+
+    .specials-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background-color: #f9f0e1;
+      padding: 80px 60px;
+      text-align: center;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .testi-card {
+      background-color: #fdf6ee;
+      border: 1px solid #e2cdb0;
+      border-radius: 6px;
+      padding: 28px 22px;
+      text-align: left;
+    }
+
+    .testi-card:hover {
+      transform: translateY(-4px);
+      transition: 0.3s;
+    }
+
+    .stars {
+      color: #b8793a;
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+
+    .quote {
+      font-size: 15px;
+      color: #3b2410;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .author {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      background-color: #f5e9d5;
+      border: 1px solid #e2cdb0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #3b2410;
+    }
+
+    .author-location {
+      font-size: 12px;
+      color: #7a5c3e;
+      margin-top: 2px;
+    }
+
+    /* ===== VISIT SECTION ===== */
+    .visit {
+      display: flex;
+      min-height: 500px;
+    }
+
+    .map-side {
+      flex: 1;
+      background: linear-gradient(135deg, #e8d5b0, #c8a878);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      position: relative;
+    }
+
+    /* Map grid lines */
+    .map-side::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,36,16,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,36,16,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .info-side {
+      flex: 1;
+      background-color: #1c1208;
+      padding: 60px 50px;
+    }
+
+    .info-side .section-label { color: #d4a265; }
+    .info-side .section-title { color: #f9f0e1; }
+
+    .hours-list {
+      margin-top: 25px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .day-name {
+      font-size: 13px;
+      color: rgba(249,240,225,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .day-time {
+      font-size: 14px;
+      color: #d4a265;
+      font-style: italic;
+    }
+
+    .address-box {
+      margin-top: 25px;
+      padding: 18px;
+      background-color: rgba(255,255,255,0.04);
+      border: 1px solid rgba(184,121,58,0.25);
+      border-radius: 6px;
+    }
+
+    .address-box .label {
+      color: #f9f0e1;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .address-box p {
+      font-size: 14px;
+      color: rgba(249,240,225,0.55);
+      line-height: 1.8;
+    }
+
+    .directions-btn {
+      display: inline-block;
+      margin-top: 22px;
+      background-color: #b8793a;
+      color: white;
+      padding: 12px 26px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .directions-btn:hover {
+      background-color: #d4a265;
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background-color: #b8793a;
+      padding: 70px 60px;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: 32px;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .newsletter p {
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background-color: rgba(255,255,255,0.15);
+      color: white;
+      font-size: 14px;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .newsletter-form button {
+      padding: 12px 24px;
+      background-color: #1c1208;
+      color: #f9f0e1;
+      border: none;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .newsletter-form button:hover {
+      background-color: #3b2410;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #1c1208;
+      padding: 60px 60px 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 25px;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #f9f0e1;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo span {
+      color: #b8793a;
+    }
+
+    .footer-about p {
+      font-size: 13px;
+      color: rgba(249,240,225,0.4);
+      line-height: 1.8;
+      max-width: 220px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(249,240,225,0.45);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .social-link:hover {
+      border-color: #b8793a;
+      color: #b8793a;
+    }
+
+    .footer-col h4 {
+      color: #f9f0e1;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: rgba(249,240,225,0.4);
+      font-size: 13px;
+    }
+
+    .footer-col ul li a:hover {
+      color: #d4a265;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(249,240,225,0.25);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 12px;
+      color: rgba(249,240,225,0.25);
+    }
+
+    .footer-bottom-links a:hover {
+      color: #d4a265;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <div class="logo">Sweet <span>Crust</span> Bakery</div>
+    <ul>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#specials">Specials</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+    </ul>
+    <a href="#visit" class="order-btn">Order Now</a>
+  </nav>
+
+
+  <!-- ===== HERO SECTION ===== -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="small-tag">Est. 2008 · Artisan Bakery</p>
+      <h1>Baked with <span>love,</span><br/>crafted with<br/>tradition.</h1>
+      <p>From our stone-hearth ovens to your table — every loaf, pastry, and cake is made fresh each morning using time-honoured recipes and locally sourced ingredients.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn-dark">Explore Menu</a>
+        <a href="#about" class="btn-link">Our Story →</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Recipes Daily</div>
+        </div>
+        <div>
+          <div class="stat-number">16</div>
+          <div class="stat-label">Years of Craft</div>
+        </div>
+        <div>
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Happy Guests</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&auto=format&fit=crop"
+        alt="Fresh artisan bread loaves"
+      />
+      <div class="hero-badge">
+        <div class="badge-title">Today's Special</div>
+        <div class="badge-sub">Sourdough · Fresh at 7AM</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== SCROLLING TICKER ===== -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Fresh Sourdough</span>
+      <span>✦</span>
+      <span>Butter Croissants</span>
+      <span>✦</span>
+      <span>Artisan Baguettes</span>
+      <span>✦</span>
+      <span>Cinnamon Rolls</span>
+      <span>✦</span>
+      <span>Almond Tarts</span>
+      <span>✦</span>
+      <span>Pain au Chocolat</span>
+      <span>✦</span>
+      <span>Fresh Sourdough</span>
+      <span>✦</span>
+      <span>Butter Croissants</span>
+      <span>✦</span>
+      <span>Artisan Baguettes</span>
+      <span>✦</span>
+      <span>Cinnamon Rolls</span>
+      <span>✦</span>
+      <span>Almond Tarts</span>
+      <span>✦</span>
+      <span>Pain au Chocolat</span>
+      <span>✦</span>
+    </div>
+  </div>
+
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <div class="about" id="about">
+    <div class="about-image">
+      <img
+        src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&auto=format&fit=crop"
+        alt="Baker working in the bakery"
+      />
+      <div class="year-badge">
+        <div class="big-num">16</div>
+        <div class="small-text">Years Baking</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">From a tiny kitchen<br/>to a <span>beloved</span> bakery</h2>
+      <p class="section-desc">What started as a passion for perfecting sourdough in a small apartment kitchen has grown into a neighbourhood institution. Every morning before sunrise, our bakers craft hundreds of loaves, pastries, and cakes — all by hand, all with love.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🌾</div>
+          <div>
+            <h4>Stone-Ground Flour</h4>
+            <p>We source heritage grain flour freshly milled within 50 miles of our bakery.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔥</div>
+          <div>
+            <h4>Wood-Fired Ovens</h4>
+            <p>Our traditional stone-deck ovens create a crust and crumb no modern oven can match.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🕐</div>
+          <div>
+            <h4>Long Fermentation</h4>
+            <p>We slow-ferment all our doughs for 18–24 hours for deep flavour and nutrition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== MENU SECTION ===== -->
+  <div class="menu" id="menu">
+    <div class="menu-header">
+      <div>
+        <p class="section-label">Fresh Daily</p>
+        <h2 class="section-title">Our <span>Signature</span> Bakes</h2>
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="setFilter(this)">All</button>
+        <button class="filter-btn" onclick="setFilter(this)">Breads</button>
+        <button class="filter-btn" onclick="setFilter(this)">Pastries</button>
+        <button class="filter-btn" onclick="setFilter(this)">Cakes</button>
+      </div>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Bestseller</div>
+          <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=500&auto=format&fit=crop" alt="Country Sourdough"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Country Sourdough</div>
+          <div class="card-desc">48-hour fermented, stone-baked with a shattering crust and open crumb.</div>
+          <div class="card-footer">
+            <div class="card-price">₹280</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Daily Fresh</div>
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&auto=format&fit=crop" alt="Butter Croissant"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Butter Croissant</div>
+          <div class="card-desc">81 layers of hand-laminated dough with French AOP butter.</div>
+          <div class="card-footer">
+            <div class="card-price">₹120</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Seasonal</div>
+          <img src="https://images.unsplash.com/photo-1519915028121-7d3463d5b1ff?w=500&auto=format&fit=crop" alt="Lemon Tart"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Lemon Tart</div>
+          <div class="card-desc">Silky curd in a buttery shell, finished with Italian meringue.</div>
+          <div class="card-footer">
+            <div class="card-price">₹195</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">New</div>
+          <img src="https://images.unsplash.com/photo-1548365328-8c6db3220e4c?w=500&auto=format&fit=crop" alt="Pretzel Rolls"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Pretzel Rolls</div>
+          <div class="card-desc">Soft inside, dark pretzel crust, finished with fleur de sel.</div>
+          <div class="card-footer">
+            <div class="card-price">₹95</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Fan Fav</div>
+          <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&auto=format&fit=crop" alt="Cinnamon Roll"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Cinnamon Roll</div>
+          <div class="card-desc">Pillowy brioche swirled with brown butter and Saigon cinnamon.</div>
+          <div class="card-footer">
+            <div class="card-price">₹145</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Whole Cake</div>
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop" alt="Honey Almond Cake"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Honey Almond Cake</div>
+          <div class="card-desc">Three layers of almond sponge with honey mascarpone and praline.</div>
+          <div class="card-footer">
+            <div class="card-price">₹850</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Classic</div>
+          <img src="https://images.unsplash.com/photo-1568471173242-461f0a730452?w=500&auto=format&fit=crop" alt="French Baguette"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">French Baguette</div>
+          <div class="card-desc">The traditional Parisian baguette — crisp, airy, unmistakable.</div>
+          <div class="card-footer">
+            <div class="card-price">₹90</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge-tag">Indulgence</div>
+          <img src="https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=500&auto=format&fit=crop" alt="Pain au Chocolat"/>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Pain au Chocolat</div>
+          <div class="card-desc">Twin batons of Valrhona dark chocolate in buttery laminated dough.</div>
+          <div class="card-footer">
+            <div class="card-price">₹135</div>
+            <button class="add-btn" onclick="addToCart(this)">+</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ===== SPECIALS SECTION ===== -->
+  <div class="specials" id="specials">
+    <div style="flex:1;">
+      <p class="section-label">This Week</p>
+      <h2 class="section-title">Chef's <span>Specials</span></h2>
+      <p class="section-desc">Each week our head baker introduces seasonal creations inspired by local harvests, travel, and tradition.</p>
+
+      <div class="specials-list">
+        <div class="special-row">
+          <div>
+            <div class="special-name">Mango & Cardamom Danish</div>
+            <div class="special-desc">Alphonso mango compote · cardamom crème pâtissière</div>
+          </div>
+          <div class="special-price">₹165</div>
+        </div>
+        <div class="special-row">
+          <div>
+            <div class="special-name">Masala Chai Babka</div>
+            <div class="special-desc">Laminated brioche · chai spice swirl · vanilla glaze</div>
+          </div>
+          <div class="special-price">₹185</div>
+        </div>
+        <div class="special-row">
+          <div>
+            <div class="special-name">Walnut & Fig Loaf</div>
+            <div class="special-desc">Whole wheat sourdough · Californian figs · toasted walnuts</div>
+          </div>
+          <div class="special-price">₹320</div>
+        </div>
+        <div class="special-row">
+          <div>
+            <div class="special-name">Pistachio Éclair</div>
+            <div class="special-desc">Choux pastry · pistachio diplomat cream · mirror glaze</div>
+          </div>
+          <div class="special-price">₹155</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specials-right">
+      <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=600&auto=format&fit=crop" alt="Chef's special pastry"/>
+    </div>
+  </div>
+
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <div class="testimonials">
+    <p class="section-label">Kind Words</p>
+    <h2 class="section-title">What our guests <span>say</span></h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"The sourdough here is simply the best I've had outside of Paris. The crust, the crumb, the flavour — absolute perfection every single time."</p>
+        <div class="author">
+          <div class="avatar">👩</div>
+          <div>
+            <div class="author-name">Priya Mehta</div>
+            <div class="author-location">Mumbai · Regular since 2019</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"I ordered a custom birthday cake and it was the talk of the entire party. The flavours, the presentation — it truly felt like a work of art."</p>
+        <div class="author">
+          <div class="avatar">👨</div>
+          <div>
+            <div class="author-name">Arjun Kapoor</div>
+            <div class="author-location">Delhi · Custom Order</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Walking in here every Saturday morning has become a ritual. The smell, the warmth, the croissants — it makes weekends feel magical."</p>
+        <div class="author">
+          <div class="avatar">👩</div>
+          <div>
+            <div class="author-name">Sunita Rao</div>
+            <div class="author-location">Bangalore · Local Regular</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== VISIT / HOURS ===== -->
+  <div class="visit" id="visit">
+    <div class="map-side">📍</div>
+
+    <div class="info-side">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Visit the <span style="color:#b8793a;font-style:italic;">Bakery</span></h2>
+
+      <div class="hours-list">
+        <div class="hours-row">
+          <span class="day-name">Monday – Friday</span>
+          <span class="day-time">7:00 AM – 7:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span class="day-name">Saturday</span>
+          <span class="day-time">6:30 AM – 8:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span class="day-name">Sunday</span>
+          <span class="day-time">7:00 AM – 5:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span class="day-name">Public Holidays</span>
+          <span class="day-time">8:00 AM – 3:00 PM</span>
+        </div>
+      </div>
+
+      <div class="address-box">
+        <span class="label">Address</span>
+        <p>12, Bakery Lane, Bandra West<br/>Mumbai – 400050, Maharashtra<br/>📞 +91 98200 12345</p>
+      </div>
+
+      <a href="#" class="directions-btn">Get Directions →</a>
+    </div>
+  </div>
+
+
+  <!-- ===== NEWSLETTER ===== -->
+  <div class="newsletter">
+    <h2>Never miss a fresh batch</h2>
+    <p>Subscribe for weekly specials, seasonal menus, and behind-the-scenes from our kitchen.</p>
+    <div class="newsletter-form">
+      <input type="email" id="emailInput" placeholder="your@email.com"/>
+      <button onclick="subscribe()">Subscribe</button>
+    </div>
+  </div>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <span class="footer-logo">Sweet <span>Crust</span> Bakery</span>
+        <p>Artisan baking rooted in tradition, made fresh every morning with local ingredients and a whole lot of love.</p>
+        <div class="social-links">
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">tw</a>
+          <a href="#" class="social-link">yt</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Bakery</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Meet the Bakers</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#">Breads & Loaves</a></li>
+          <li><a href="#">Pastries</a></li>
+          <li><a href="#">Cakes & Tarts</a></li>
+          <li><a href="#">Seasonal Specials</a></li>
+          <li><a href="#">Custom Orders</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Visit Us</a></li>
+          <li><a href="#">Wholesale</a></li>
+          <li><a href="#">Workshops</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Sweet Crust Bakery. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===== SIMPLE JAVASCRIPT ===== -->
+  <script>
+
+    // Filter buttons - highlight the clicked one
+    function setFilter(btn) {
+      var buttons = document.querySelectorAll('.filter-btn');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+      }
+      btn.classList.add('active');
+    }
+
+    // Add to cart button - show tick then reset
+    function addToCart(btn) {
+      btn.textContent = '✓';
+      btn.style.backgroundColor = '#4a7c59';
+      setTimeout(function() {
+        btn.textContent = '+';
+        btn.style.backgroundColor = '';
+      }, 1500);
+    }
+
+    // Newsletter subscribe
+    function subscribe() {
+      var input = document.getElementById('emailInput');
+      if (input.value.indexOf('@') !== -1) {
+        input.value = '';
+        input.placeholder = '✓ You are on the list!';
+        setTimeout(function() {
+          input.placeholder = 'your@email.com';
+        }, 3000);
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    }
+
+  </script>
+
+</body>
+</html>
